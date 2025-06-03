@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,116 +8,188 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
   <style>
     body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background:
-        linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
-        url('https://i.ibb.co/DfXbq6Y3/1239bd52ed659fbdb6a941bc87d26c53.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #00ffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 2rem 1rem;
-    }
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background:
+    linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
+    url('https://i.ibb.co/DfXbq6Y3/1239bd52ed659fbdb6a941bc87d26c53.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #00ffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      text-shadow: 0 0 10px #00ffff, 0 0 20px #33ffff;
-    }
+h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #33ffff;
+}
 
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.5rem;
-      max-width: 900px;
-      width: 100%;
-    }
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  width: 100%;
+}
 
-    .category-card {
-      background: rgba(0,0,40,0.75);
-      border: 2px solid #00ffff;
-      border-radius: 16px;
-      padding: 2rem 1rem;
-      text-align: center;
-      font-size: 1.4rem;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00ffff, 0 0 20px #33ffff;
-      transition: transform 0.3s;
-    }
+.category-card {
+  background: rgba(0,0,40,0.75);
+  border: 2px solid #00ffff;
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #33ffff;
+  transition: transform 0.3s;
+}
 
-    .category-card:hover {
-      transform: translateY(-5px);
-    }
+.category-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #33ffff;
+}
 
-    /* Popup Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.85);
-      align-items: center;
-      justify-content: center;
-    }
+/* Popup Modal */
+.modal {
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 100;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+}
 
-    .modal-content {
-      background: rgba(0,0,40,0.9);
-      padding: 2rem;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 0 20px #00ffff, 0 0 40px #33ffff;
-      max-width: 90%;
-      width: 320px;
-    }
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
 
-    .modal-content h2 {
-      margin-bottom: 1rem;
-    }
+.modal-content {
+  background: rgba(0,0,40,0.9);
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 0 20px #00ffff, 0 0 40px #33ffff;
+  max-width: 90%;
+  width: 320px;
+}
 
-    .modal-content button {
-      display: block;
-      width: 100%;
-      margin: 0.5rem 0;
-      padding: 0.8rem;
-      border: none;
-      font-size: 1rem;
-      border-radius: 10px;
-      background: #00ffff;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+.modal-content h2 {
+  margin-bottom: 1rem;
+}
 
-    .modal-content button:hover {
-      background: #33ffff;
-    }
+.modal-content button {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  border: none;
+  font-size: 1rem;
+  border-radius: 10px;
+  background: #00ffff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
 
-    .close-btn {
-      margin-top: 1rem;
-      background: #111;
-      color: #fff;
-      border: 1px solid #00ffff;
-    }
+.modal-content button:hover {
+  background: #33ffff;
+}
 
-    @media (max-width: 480px) {
-      h1 { font-size: 2rem; }
-      .category-card { font-size: 1.2rem; padding: 1.5rem; }
-    }
+.close-btn {
+  margin-top: 1rem;
+  background: #111;
+  color: #fff;
+  border: 1px solid #00ffff;
+}
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .categories {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.2rem;
+    max-width: 100%;
+  }
+
+  .category-card {
+    padding: 1.8rem 1rem;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .categories {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .category-card {
+    padding: 1.5rem 1rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1rem 0.5rem;
+    background:
+      linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,1)),
+      url('https://i.ibb.co/DfXbq6Y3/1239bd52ed659fbdb6a941bc87d26c53.jpg') no-repeat center center fixed;
+  }
+
+  h1 {
+    font-size: 2rem;
+    text-shadow: 0 0 15px #00ffff, 0 0 30px #33ffff;
+  }
+
+  .category-card {
+    font-size: 1.1rem;
+    padding: 1.2rem 0.8rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+    width: 90%;
+  }
+
+  .modal-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-content button {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+}
+
+
   </style>
 </head>
 <body>
   <h1>Solo Notes - Categories</h1>
- <div class="categories">
-  <div class="category-card" onclick="openModal('Physics', 'https://drive.google.com/file/d/1Y_9FOyN5cT1W6DC1xuoJ8QFWVN5a8C9k/view?usp=drive_link', 'physics-notes.html')">Physics</div>
+  <div class="categories">
+    <div class="category-card" onclick="openModal('Physics', 'https://drive.google.com/file/d/1195P36rNwPl_dxm7tWkCBRo2HMxDwNyE/view', 'physics-notes.html')">Physics</div>
+    <div class="category-card" onclick="openModal('Computer', 'https://lasthopestudy.com/wp-content/uploads/2025/04/Computer-11-EM.pdf', 'computer-notes.html')">Computer</div>
+    <div class="category-card" onclick="openModal('Maths',  'https://drive.google.com/file/d/15Sa7DGYGw9H9HKRZCrqQzd6sDu0MAwaQ/view')">Maths</div>
+<div class="category-card" onclick="openModal('English', 'https://lasthopestudy.com/wp-content/uploads/2025/04/English-11th_compressed.pdf', 'english-notes.html')">English</div>
 
-  <div class="category-card" onclick="openModal('Computer', 'computer-book.pdf', 'computer-notes.html')">Computer</div>
-  <div class="category-card" onclick="openModal('Maths', 'Desktop/study-material/maths-book.pdf', 'maths-notes.html')">Maths</div>
-</div>
+<div class="category-card" onclick="openModal('Biology', 'https://drive.google.com/file/d/114tPavG6JgzGkFvdUpWNyIE_iZWgfY_Y/view', 'biology-notes.html')">Biology</div>
+<div class="category-card" onclick="openModal('Chemistery😴', 'https://drive.google.com/file/d/1KDIixr5ehf5MzS3EsPfrmpNA2kLTyBKu/view', 'Chemistry-notes.html')">Chemistry😴</div>
+<div class="category-card" onclick="openModal('Urdu', 'https://lasthopestudy.com/wp-content/uploads/2025/04/Urdu-XI-Finalized-with-Pictures-1.pdf', 'urdu-notes.html')">Urdu</div>
 
+<div class="category-card" onclick="openModal('Islamiat', 'https://drive.google.com/file/d/1mx0GDBghDwcwiyc9bGkk9yhy8nQ-hkOu/view', 'islamiat-notes.html')">Islamiat</div>
+
+
+<div class="category-card" onclick="openModal('ترجمۃُ القُرآن', 'https://drive.google.com/file/d/13-5E7OTI7SXT_n8n3JVr2w1FoA-3YC5k/view', 'T.T-Quran.html')">ترجمۃُ القُرآن</div>
 
   <!-- Popup Modal -->
   <div class="modal" id="popup">
@@ -132,24 +205,34 @@
     let pdfLink = '';
     let notesLink = '';
 
-    function openModal(subject, pdf, notes) {
-      document.getElementById('modal-subject').innerText = subject;
-      pdfLink = pdf;
-      notesLink = notes;
-      document.getElementById('popup').style.display = 'flex';
-    }
+ function openModal(subject, pdf, notes) {
+  document.getElementById('modal-subject').innerText = subject;
+  pdfLink = pdf;
+  notesLink = notes;
+  document.getElementById('popup').classList.add('show');
+}
 
-    function closeModal() {
-      document.getElementById('popup').style.display = 'none';
-    }
+function closeModal() {
+  document.getElementById('popup').classList.remove('show');
+}
+
 
     document.getElementById('open-pdf').onclick = () => {
       if (pdfLink) window.open(pdfLink, '_blank');
+ closeModal();
     };
 
     document.getElementById('open-notes').onclick = () => {
       if (notesLink) window.location.href = notesLink;
+ closeModal();
     };
+document.getElementById('popup').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('popup')) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
   </script>
 </body>
 </html>
