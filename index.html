@@ -7,11 +7,11 @@
   <title>Solo Notes - Categories</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
   <style>
-    body {
+   body {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
   background:
-    linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
+    linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
     url('https://i.ibb.co/DfXbq6Y3/1239bd52ed659fbdb6a941bc87d26c53.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #00ffff;
@@ -37,7 +37,7 @@ h1 {
 }
 
 .category-card {
-  background: rgba(0,0,40,0.75);
+  background: rgba(0, 0, 40, 0.75);
   border: 2px solid #00ffff;
   border-radius: 16px;
   padding: 2rem 1rem;
@@ -45,7 +45,7 @@ h1 {
   font-size: 1.4rem;
   cursor: pointer;
   box-shadow: 0 0 10px #00ffff, 0 0 20px #33ffff;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .category-card:hover {
@@ -53,7 +53,7 @@ h1 {
   box-shadow: 0 0 15px #00ffff, 0 0 30px #33ffff;
 }
 
-/* Popup Modal */
+/* Modal Styles */
 .modal {
   display: flex;
   opacity: 0;
@@ -73,7 +73,7 @@ h1 {
 }
 
 .modal-content {
-  background: rgba(0,0,40,0.9);
+  background: rgba(0, 0, 40, 0.9);
   padding: 2rem;
   border-radius: 16px;
   text-align: center;
@@ -84,6 +84,7 @@ h1 {
 
 .modal-content h2 {
   margin-bottom: 1rem;
+  font-size: 1.7rem;
 }
 
 .modal-content button {
@@ -112,12 +113,11 @@ h1 {
   border: 1px solid #00ffff;
 }
 
-/* Responsive tweaks */
+/* Responsive Tweaks */
 @media (max-width: 1024px) {
   .categories {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1.2rem;
-    max-width: 100%;
   }
 
   .category-card {
@@ -142,13 +142,12 @@ h1 {
   body {
     padding: 1rem 0.5rem;
     background:
-      linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,1)),
+      linear-gradient(rgba(0,0,0,0.95), rgba(0,0,0,1)),
       url('https://i.ibb.co/DfXbq6Y3/1239bd52ed659fbdb6a941bc87d26c53.jpg') no-repeat center center fixed;
   }
 
   h1 {
     font-size: 2rem;
-    text-shadow: 0 0 15px #00ffff, 0 0 30px #33ffff;
   }
 
   .category-card {
@@ -177,40 +176,39 @@ h1 {
 <body>
   <h1>Solo Notes - Categories</h1>
   <div class="categories">
-    <div class="category-card" onclick="openModal('Physics', 'https://drive.google.com/file/d/1195P36rNwPl_dxm7tWkCBRo2HMxDwNyE/view', 'physics-notes.html')">Physics</div>
-    <div class="category-card" onclick="openModal('Computer', 'https://lasthopestudy.com/wp-content/uploads/2025/04/Computer-11-EM.pdf', 'computer-notes.html')">Computer</div>
+    <div class="category-card" onclick="openModal('Physics', 'https://drive.google.com/file/d/1195P36rNwPl_dxm7tWkCBRo2HMxDwNyE/view')">Physics</div>
+    <div class="category-card" onclick="openModal('Computer', 'https://lasthopestudy.com/wp-content/uploads/2025/04/Computer-11-EM.pdf')">Computer</div>
     <div class="category-card" onclick="openModal('Maths',  'https://drive.google.com/file/d/15Sa7DGYGw9H9HKRZCrqQzd6sDu0MAwaQ/view')">Maths</div>
-<div class="category-card" onclick="openModal('English', 'https://lasthopestudy.com/wp-content/uploads/2025/04/English-11th_compressed.pdf', 'english-notes.html')">English</div>
+<div class="category-card" onclick="openModal('English', 'https://lasthopestudy.com/wp-content/uploads/2025/04/English-11th_compressed.pdf')">English</div>
 
-<div class="category-card" onclick="openModal('Biology', 'https://drive.google.com/file/d/114tPavG6JgzGkFvdUpWNyIE_iZWgfY_Y/view', 'biology-notes.html')">Biology</div>
-<div class="category-card" onclick="openModal('Chemistery😴', 'https://drive.google.com/file/d/1KDIixr5ehf5MzS3EsPfrmpNA2kLTyBKu/view', 'Chemistry-notes.html')">Chemistry😴</div>
-<div class="category-card" onclick="openModal('Urdu', 'https://lasthopestudy.com/wp-content/uploads/2025/04/Urdu-XI-Finalized-with-Pictures-1.pdf', 'urdu-notes.html')">Urdu</div>
+<div class="category-card" onclick="openModal('Biology', 'https://drive.google.com/file/d/114tPavG6JgzGkFvdUpWNyIE_iZWgfY_Y/view')">Biology</div>
+<div class="category-card" onclick="openModal('Chemistery😴', 'https://drive.google.com/file/d/1KDIixr5ehf5MzS3EsPfrmpNA2kLTyBKu/view')">Chemistry😴</div>
+<div class="category-card" onclick="openModal('Urdu', 'https://lasthopestudy.com/wp-content/uploads/2025/04/Urdu-XI-Finalized-with-Pictures-1.pdf')">Urdu</div>
 
-<div class="category-card" onclick="openModal('Islamiat', 'https://drive.google.com/file/d/1mx0GDBghDwcwiyc9bGkk9yhy8nQ-hkOu/view', 'islamiat-notes.html')">Islamiat</div>
+<div class="category-card" onclick="openModal('Islamiat', 'https://drive.google.com/file/d/1mx0GDBghDwcwiyc9bGkk9yhy8nQ-hkOu/view')">Islamiat</div>
 
 
-<div class="category-card" onclick="openModal('ترجمۃُ القُرآن', 'https://drive.google.com/file/d/13-5E7OTI7SXT_n8n3JVr2w1FoA-3YC5k/view', 'T.T-Quran.html')">ترجمۃُ القُرآن</div>
+<div class="category-card" onclick="openModal('ترجمۃُ القُرآن', 'https://drive.google.com/file/d/13-5E7OTI7SXT_n8n3JVr2w1FoA-3YC5k/view')">ترجمۃُ القُرآن</div>
 
   <!-- Popup Modal -->
   <div class="modal" id="popup">
     <div class="modal-content">
       <h2 id="modal-subject">Subject</h2>
       <button id="open-pdf">📘 Open Book (PDF)</button>
-      <button id="open-notes">📝 Your Notes</button>
-      <button class="close-btn" onclick="closeModal()">Close</button>
+            <button class="close-btn" onclick="closeModal()">Close</button>
     </div>
   </div>
 
   <script>
     let pdfLink = '';
-    let notesLink = '';
+    
 
- function openModal(subject, pdf, notes) {
+function openModal(subject, pdf) {
   document.getElementById('modal-subject').innerText = subject;
   pdfLink = pdf;
-  notesLink = notes;
   document.getElementById('popup').classList.add('show');
 }
+
 
 function closeModal() {
   document.getElementById('popup').classList.remove('show');
@@ -222,10 +220,6 @@ function closeModal() {
  closeModal();
     };
 
-    document.getElementById('open-notes').onclick = () => {
-      if (notesLink) window.location.href = notesLink;
- closeModal();
-    };
 document.getElementById('popup').addEventListener('click', (e) => {
   if (e.target === document.getElementById('popup')) closeModal();
 });
